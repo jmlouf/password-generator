@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var rerollBtn = document.querySelector("#reroll");
 
 
 
@@ -57,7 +58,7 @@ var getCharTypes = function() {
 
 // Function to generate password
 var generatePassword = function() {
-    
+
     var passwordLength = getLength();
     var passwordCharTypes = getCharTypes();
 
