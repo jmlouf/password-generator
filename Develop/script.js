@@ -1,9 +1,11 @@
-// Assignment Code
+// Global variables
 var generateBtn = document.querySelector("#generate");
+var rerollBtn = document.querySelector("#reroll");
 
+var passwordLength;
+var passwordCharTypes;
 
-
-var getLength = function() {
+function getLength() {
 
     while (true) {
 
@@ -27,7 +29,7 @@ var getLength = function() {
 
 
 
-var getCharTypes = function() {
+function getCharTypes() {
 
     var validCharTypes = ["lowercase", "uppercase", "numbers", "special"];
 
@@ -56,10 +58,7 @@ var getCharTypes = function() {
 
 
 // Function to generate password
-var generatePassword = function() {
-
-    var passwordLength = getLength();
-    var passwordCharTypes = getCharTypes();
+function generatePassword() {
 
     var lowercase = "abcdefghijklmnopqrstuvwxyz";
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -110,9 +109,26 @@ function writePassword() {
 
     window.alert("To create a password, please answer the following prompts.");
 
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
+    passwordLength = getLength();
+    passwordCharTypes = getCharTypes();
 
+    var password = generatePassword();
+
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+
+};
+
+
+
+function rewritePassword() {
+
+    var rewritePasswordLength = passwordLength;
+    var rewritePasswordCharTypes = passwordCharTypes;
+
+    var password = generatePassword(rewritePasswordLength, rewritePasswordCharTypes);
+
+    var passwordText = document.querySelector("#password");
     passwordText.value = password;
 
 };
@@ -121,3 +137,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+rerollBtn.addEventListener("click", rewritePassword);
